@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation - Bistone Hotel Management System</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        /* Basic styling to make the page more attractive */
+        body {
+            background-color: #f7f7f7;
+        }
+        .section-heading {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+        .form-section {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar (unchanged) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand ml-5" href="#">Bistone Hotel Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Administration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Languages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Reservation Section -->
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Common Information -->
+                <div class="col-md-12">
+                    <div class="section-heading">Common Information</div>
+                    <form class="form-section">
+                        <div class="form-group mb-3">
+                            <label for="code">Code:</label>
+                            <input type="text" id="code" class="form-control" readonly>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="status">Status:</label>
+                            <select id="status" class="form-control">
+                                <option value="New">New</option>
+                                <option value="Existing">Existing</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="booking-time">Booking Time:</label>
+                            <input type="text" id="booking-time" class="form-control" readonly>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="user">User:</label>
+                            <select id="user" class="form-control">
+                                <option value="Admin">Admin</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Staff">Staff</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Reservation Form -->
+                <div class="col-md-12">
+                    <div class="section-heading">Reservation</div>
+                    <!-- Room Information (Sub-section 1) -->
+                    
+                    <form class="form-section">
+                        <!-- Room Information Form Fields -->
+                        <h3>Room Information</h3>
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="check-in">Check In:</label>
+                            <input type="date" id="check-in" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="check-out">Check Out:</label>
+                            <input type="date" id="check-out" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="adults">Number of Adults:</label>
+                            <input type="number" id="adults" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="childs">Number of Children:</label>
+                            <input type="number" id="childs" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="infants">Number of Infants:</label>
+                            <input type="number" id="infants" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Rooms:</label><br>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="room" id="single-standard" class="form-check-input" value="Single Standard" >
+                                <label for="single-standard" class="form-check-label">Single Standard</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="room" id="double-standard" class="form-check-input" value="Double Standard">
+                                <label for="double-standard" class="form-check-label">Double Standard</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="room" id="suite-room" class="form-check-input" value="Suite Room">
+                                <label for="suite-room" class="form-check-label">Suite Room</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="room" id="double-dulux" class="form-check-input" value="Double Dulux">
+                                <label for="double-dulux" class="form-check-label">Double Dulux</label>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Guest Information (Sub-section 2) -->
+                    <form class="form-section">
+                        <!-- Guest Information Form Fields -->
+                        <div class="form-group mb-3">
+                            <label for="guest-name">Guest Name:</label>
+                            <input type="text" id="guest-name" class="form-control" required>
+                        </div>
+                        <label for="guest-name">Gender:</label> <br>
+                        <div class="form-check form-check-inline mb-3"> 
+                            <input type="radio" name="gen" id="gen-male" class="form-check-input" value="Male">
+                            <label for="Male" class="form-check-label">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline mb-3">
+                            <input type="radio" name="gen" id="gen-female" class="form-check-input" value="Female">
+                            <label for="Female" class="form-check-label">Female</label>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" class="form-control" required />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="phone">Phone:</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="special-request">Special Request:</label>
+                            <textarea id="special-request" class="form-control" rows="3"></textarea>
+                        </div>
+                    </form>
+
+                    <!-- Billing Address (Sub-section 3) -->
+                    <form class="form-section">
+                        <!-- Billing Address Form Fields -->
+                        <div class="form-group mb-3">
+                            <label for="address">Address:</label>
+                            <input type="text" id="address" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="city">City:</label>
+                            <input type="text" id="city" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="state">State:</label>
+                            <input type="text" id="state" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="country">Country:</label>
+                            <input type="text" id="country" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="postal-code">Postal Code:</label>
+                            <input type="number" id="postal-code" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Meals (Section 4) -->
+    <section class="py-4">
+        <div class="container">
+            <div class="section-heading">Additional Meals</div>
+            <form class="form-section">
+                <!-- Additional Meals Form Fields -->
+                <div class="form-check">
+                    <input type="checkbox" id="breakfast" class="form-check-input" name="meals" value="Breakfast" checked>
+                    <label for="breakfast" class="form-check-label">Breakfast</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="lunch" class="form-check-input" name="meals" value="Lunch">
+                    <label for="lunch" class="form-check-label">Lunch</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="dinner" class="form-check-input" name="meals" value="Dinner">
+                    <label for="dinner" class="form-check-label">Dinner</label>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Payment Method (Section 5) -->
+    <section class="py-4">
+        <div class="container">
+            <div class="section-heading">Payment Method</div>
+            <form class="form-section">
+                <div id="cashh-details" class="form-section">
+                    <p><b>Total Amount:</b> ₱<span id="cash-amount">1250.00</span></p>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input type="radio" id="cash" class="form-check-input" name="payment-method" value="Cash" checked>
+                    <label for="cash" class="form-check-label">Cash Payment</label>
+                </div>
+                <div class="form-check mb-3">
+                    <input type="radio" id="card" class="form-check-input" name="payment-method" value="Card">
+                    <label for="card" class="form-check-label">Card Payment (Master, Visa)</label>
+                </div>
+
+                <!-- Cash Payment Details -->
+                
+
+                <!-- Card Payment Details (Hidden by default) -->
+                <div id="card-details" class="form-section" name="Card" style="display: none;">
+                    <div class="form-group mb-3">
+                        <label for="name-on-card">Name on Card:</label>
+                        <input type="text" id="name-on-card" class="form-control name" placeholder="Type your name" >
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="card-number ">Card Number:</label>
+                        <input type="tel" id="card-number" class="form-control cc-card" inputmode="numeric" pattern="\d*" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" >
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="expiry-date ">Expiry Date (MM/YY): </label> <br>
+                        <input type="tel" id="expiry-date" placeholder="MM" maxlength="2" pattern="^\d{2}$" class="form-control cc-exp"  > / 
+                       
+                        <input type="tel" id="expiry-date" placeholder="YY" maxlength="4" pattern="^\d{4}$" class="form-control cc-exp"  >
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="cvv">CVV:</label>
+                        <input type="password" id="cvv" maxlength="3" pattern="^\d{3}$" class="form-control cc-cvv" >
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Submit Button -->
+    <div class="text-center py-4 ">
+        <button class="btn btn-primary btn-lg" id="submit-button">Submit</button>
+    </div>
+
+
+    <!-- Footer (unchanged) -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2023 Bistone Hotel Management System. Created by Genevive Ortiz <i class="fa fa-heart" style="font-size:16px;color:red"></i> <br> All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript logic for generating a random 8-digit code
+        document.getElementById("code").value = Math.floor(10000000 + Math.random() * 90000000);
+        
+        // JavaScript logic for displaying/hiding payment details based on the selected payment method
+        const cashRadio = document.getElementById("cash");
+        const cardRadio = document.getElementById("card");
+        const cashDetails = document.getElementById("cash-details");
+        const cardDetails = document.getElementById("card-details");
+        const cashAmount = document.getElementById("cash-amount");
+        //
+        cashAmount.innerText = (Math.random() * 1000 + 500).toFixed(2);
+        // 
+        const options = { timeZone: 'Asia/Manila', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const pstTime = new Date().toLocaleString('en-US', options);
+        document.getElementById("booking-time").value = pstTime
+
+        
+
+        cashRadio.addEventListener("change", () => {
+            if (cashRadio.checked ) {
+                // cashDetails.style.display = "block";
+                cardDetails.style.display = "none";
+            }
+        });
+
+        cardRadio.addEventListener("change", () => {
+            if (cardRadio.checked) {
+                // cashDetails.style.display = "none";
+                cardDetails.style.display = "block";
+            }
+        });
+
+        $('#card-details .cc-card').formatCardNumber();
+        $('#card-details .cc-exp').formatCardExpiry();
+        $('#card-details .cc-cvc').formatCardCVC();
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.js"></script>
+<script>
+    // JavaScript logic for form submission and SweetAlert
+    document.getElementById("submit-button").addEventListener("click", () => {
+        // Validate all required fields here
+        const isFormValid = validateForm(); // You need to implement the validation logic
+
+        if (isFormValid) {
+            // If the form is valid, display a SweetAlert confirmation
+            Swal.fire({
+                icon: 'success',
+                title: 'Reservation Recorded',
+                text: 'Your reservation has been successfully submitted!',
+                showConfirmButton: true,
+            }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to another page
+                window.location.href = 'index.html';
+            }
+        });
+        } else {
+            // If the form is not valid, display a SweetAlert error message
+            Swal.fire({
+                icon: 'error',
+                title:'Please fill in all required fields ',
+                text: 'Some fields are not submitted! ',
+            }); 
+        }
+    });
+
+    // Function to validate the form (you need to implement this)
+    function validateForm() {
+    // Validate common information, room information, guest information, and billing address
+    const requiredFields = document.querySelectorAll(".form-section input[required]");
+    for (const field of requiredFields) {
+        if (!field.value) {
+            return false;
+        }
+    }
+
+    // Check payment method and card details only if payment mode is "Card"
+    const paymentMethod = document.querySelector("input[name='payment-method']:checked");
+    if (paymentMethod && paymentMethod.value === "Card") {
+        const cardDetailsFields = document.querySelectorAll(".form-section input.card-details[required]");
+        for (const field of cardDetailsFields) {
+            if (!field.value) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+
+</script>
+</body>
+</html>

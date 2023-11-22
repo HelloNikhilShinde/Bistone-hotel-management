@@ -1,0 +1,45 @@
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+          }
+.navbar ul{
+    margin-left: 250px;
+}
+
+ #navbarNav .nav-item{
+    padding-left: 40px ;
+    
+}
+#navbarNav .nav-item a{
+    color:black;
+    font-size: large;
+
+} 
+
+.cc-exp{
+    width:70px;
+    width: 5%; 
+    display: inline-block;
+}
+
+
+
+
+@media screen and (max-width: 450px) {
+    .navbar ul{
+        margin-left: 0px;
+    }
+
+    .nav-item{
+    margin-top:10px;
+    border-bottom: 1px solid black;
+    width:100%;
+    }
+    .home{
+        margin-top:20px;
+        border-top:1px solid black;
+    }
+    
+    .cc-exp{
+        width:30%;
+    }
+  }
